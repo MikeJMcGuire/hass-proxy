@@ -2,10 +2,17 @@
 set -e
 
 CONFIG_PATH=/data/options.json
+DHPARAMS_PATH=/data/dhparams.pem
 
 DOMAIN=$(jq --raw-output ".domain" $CONFIG_PATH)
 KEYFILE=$(jq --raw-output ".keyfile" $CONFIG_PATH)
 CERTFILE=$(jq --raw-output ".certfile" $CONFIG_PATH)
+
+# Generate dhparams
+if [ ! -f "$DHPARAMS_PATH" ]; then
+    echo "[INFO] Generating dhparams (this will take some time)..."
+    openssl dhparam -dsaparam -out "$DHPARAMS_PATH" 4096 > /dev/null
+fi
 
 # Prepare config file
 sed -i "s/%%FULLCHAIN%%/$CERTFILE/g" /etc/nginx.conf
