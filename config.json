@@ -6,6 +6,12 @@
   "url": "https://github.com/MikeJMcGuire/hass-proxy",
   "startup": "application",
   "boot": "auto",
+  "image": "mikejmcguire/hass-proxy-{arch}",
+  "arch": [
+    "amd64",
+    "armhf",
+    "i386"
+  ],
   "ports": {
     "443/tcp": 443
    },
