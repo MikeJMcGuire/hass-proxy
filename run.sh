@@ -14,5 +14,4 @@ sed -i "s/%%DOMAIN%%/$DOMAIN/g" /etc/nginx.conf
 
 # start server
 echo "[INFO] Running nginx..."
-ls /share/nginx_*.conf
 exec nginx -c /etc/nginx.conf < /dev/null
