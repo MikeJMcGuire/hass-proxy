@@ -2,8 +2,6 @@
 set -e
 
 CONFIG_PATH=/data/options.json
-DHPARAMS_PATH=/data/dhparams.pem
-
 
 DOMAIN=$(jq --raw-output ".domain" $CONFIG_PATH)
 KEYFILE=$(jq --raw-output ".keyfile" $CONFIG_PATH)
